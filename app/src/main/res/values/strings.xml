@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">spaceX launches</string>
+    <string name="check_internet">check your internets</string>
+    <string name="nothing_to_load">nothing to load</string>
+    <string name="not_found">not found</string>
+    <string name="reusable">reusable</string>
+    <string name="not_reusable">not reusable</string>
 </resources>

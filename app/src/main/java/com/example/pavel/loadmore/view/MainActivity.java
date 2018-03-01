@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         //mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        mToolbar.setTitle("spaceX launches");
+        mToolbar.setTitle(R.string.app_name);
         launches = new ArrayList<Launch>();
         /**
          * loading first data
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<Launch>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"check your internets",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),R.string.check_internet,Toast.LENGTH_LONG).show();
             }
         });
 
@@ -104,22 +104,19 @@ public class MainActivity extends AppCompatActivity {
                                     current_year-=1;
                                     mUserAdapter.notifyDataSetChanged();
                                     mUserAdapter.setLoaded();
+
                                 }
                                 else{
-                                    Toast.makeText(getApplicationContext(),"nothing to load", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),R.string.nothing_to_load, Toast.LENGTH_SHORT).show();
                                 }
 
                             }
 
                             @Override
                             public void onFailure(Call<ArrayList<Launch>> call, Throwable t) {
-                                Toast.makeText(getApplicationContext(),"check your internets",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(),R.string.check_internet,Toast.LENGTH_LONG).show();
                             }
                         });
-
-
-//                        mUserAdapter.notifyDataSetChanged();
-//                        mUserAdapter.setLoaded();
                     }
                 }, 5000);
             }

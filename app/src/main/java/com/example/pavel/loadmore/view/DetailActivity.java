@@ -80,27 +80,27 @@ public class DetailActivity extends AppCompatActivity {
             details.setText(detailInfo.getDetails());
         }
         if(detailInfo.isCore()==true){
-            core.setText("reusable");
+            core.setText(R.string.reusable);
             core.setBackgroundResource(R.color.succeeded);
         }
         else{
-            core.setText("not reusable");
+            core.setText(R.string.not_reusable);
             core.setBackgroundResource(R.color.failed);
         }
         if(detailInfo.isSidecore1()==true){
-            sidecore1.setText("reusable");
+            sidecore1.setText(R.string.reusable);
             sidecore1.setBackgroundResource(R.color.succeeded);
         }
         else{
-            sidecore1.setText("not reusable");
+            sidecore1.setText(R.string.not_reusable);
             sidecore1.setBackgroundResource(R.color.failed);
         }
         if(detailInfo.isSidecore2()==true){
-            sidecore2.setText("reusable");
+            sidecore2.setText(R.string.reusable);
             sidecore2.setBackgroundResource(R.color.succeeded);
         }
         else{
-            sidecore2.setText("not reusable");
+            sidecore2.setText(R.string.not_reusable);
             sidecore2.setBackgroundResource(R.color.failed);
         }
         if (detailInfo.getArticleLink()!=null){
@@ -116,7 +116,7 @@ public class DetailActivity extends AppCompatActivity {
             articleLink.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(),"link isn't there", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),R.string.not_found, Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -134,7 +134,7 @@ public class DetailActivity extends AppCompatActivity {
             pressKit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(),"link isn't there", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),R.string.not_found, Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -151,7 +151,7 @@ public class DetailActivity extends AppCompatActivity {
             reddit1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(),"link isn't there", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),R.string.not_found, Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -168,7 +168,7 @@ public class DetailActivity extends AppCompatActivity {
             reddit2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(),"link isn't there", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),R.string.not_found, Toast.LENGTH_SHORT).show();
                 }
             });
         }

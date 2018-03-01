@@ -40,20 +40,20 @@ public class PayloadAdapter extends RecyclerView.Adapter<PayloadAdapter.customVi
             holder.payloadId.setText("id: "+payloads.get(position).getPayloadId());
         }
         else{
-            holder.payloadId.setText("id: not clear");
+            holder.payloadId.setText("id: "+R.string.not_found);
         }
 
         if (payloads.get(position).getPayloadType()!=null){
             holder.type.setText("type: "+payloads.get(position).getPayloadType());
         }
         else{
-            holder.type.setText("type: not clear");
+            holder.type.setText("type: "+R.string.not_found);
         }
         if(payloads.get(position).getOrbit()!=null){
             holder.orbit.setText("orbit: "+payloads.get(position).getOrbit());
         }
         else{
-            holder.orbit.setText("orbit: not clear");
+            holder.orbit.setText("orbit: "+R.string.not_found);
         }
     }
 
