@@ -17,32 +17,45 @@ import com.example.pavel.loadmore.model.Payload;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends AppCompatActivity {
-    TextView name,site,time,details,core,sidecore1,sidecore2;
+    @BindView(R.id.detailRocketName)
+    TextView name;
+    @BindView(R.id.detailLaunchSite)
+    TextView site;
+    @BindView(R.id.detailLaunchTime)
+    TextView time;
+    @BindView(R.id.detailDetails)
+    TextView details;
+    @BindView(R.id.detailCore)
+    TextView core;
+    @BindView(R.id.detailCore1)
+    TextView sidecore1;
+    @BindView(R.id.detailCore2)
+    TextView sidecore2;
+    @BindView(R.id.payloadsList)
     RecyclerView payloadList;
+
+    @BindView(R.id.articleLink)
+    TextView articleLink;
+    @BindView(R.id.pressLink)
+    TextView pressKit;
+    @BindView(R.id.redditLink)
+    TextView reddit1;
+    @BindView(R.id.redditLink2)
+    TextView reddit2;
+
+    Intent i;
     RecyclerView.LayoutManager layoutManager;
     PayloadAdapter payloadAdapter;
     DetailInfo detailInfo;
-    TextView articleLink, pressKit, reddit1, reddit2;
-    Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
-        name = (TextView)findViewById(R.id.detailRocketName);
-        site = (TextView)findViewById(R.id.detailLaunchSite);
-        time = (TextView)findViewById(R.id.detailLaunchTime);
-        details = (TextView)findViewById(R.id.detailDetails);
-        core = (TextView)findViewById(R.id.detailCore);
-        sidecore1 = (TextView)findViewById(R.id.detailCore1);
-        sidecore2 = (TextView)findViewById(R.id.detailCore2);
-        payloadList = (RecyclerView)findViewById(R.id.payloadsList);
-        articleLink = (TextView)findViewById(R.id.articleLink);
-        pressKit = (TextView)findViewById(R.id.pressLink);
-        reddit1 = (TextView)findViewById(R.id.redditLink);
-        reddit2 = (TextView)findViewById(R.id.redditLink2);
-
+        ButterKnife.bind(this);
 
         i = getIntent();
         detailInfo  = i.getParcelableExtra("details");

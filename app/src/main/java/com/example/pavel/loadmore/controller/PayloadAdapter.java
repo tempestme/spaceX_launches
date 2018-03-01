@@ -12,6 +12,9 @@ import com.example.pavel.loadmore.model.Payload;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by pavel on 25.02.18.
  */
@@ -59,15 +62,16 @@ public class PayloadAdapter extends RecyclerView.Adapter<PayloadAdapter.customVi
         return payloads.size();
     }
     public class customViewHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.payloadId)
         TextView payloadId;
+        @BindView(R.id.payloadType)
         TextView type;
+        @BindView(R.id.payloadOrbit)
         TextView orbit;
 
         public customViewHolder(View itemView) {
             super(itemView);
-            payloadId = itemView.findViewById(R.id.payloadId);
-            type = itemView.findViewById(R.id.payloadType);
-            orbit = itemView.findViewById(R.id.payloadOrbit);
+            ButterKnife.bind(this,itemView);
         }
     }
 }

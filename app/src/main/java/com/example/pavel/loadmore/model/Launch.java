@@ -5,6 +5,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Launch implements Serializable{
 
@@ -139,6 +140,23 @@ public class Launch implements Serializable{
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public DetailInfo passDetails(){
+        return new DetailInfo(
+                getRocket().getRocketName(),
+                getLaunchSite().getSiteNameLong(),
+                getLaunchDateUtc(),
+                getDetails(),
+                getReuse().getCore(),
+                getReuse().getSideCore1(),
+                getReuse().getSideCore2(),
+                (ArrayList<Payload>) getRocket().getSecondStage().getPayloads(),
+                getLinks().getArticleLink(),
+                getLinks().getPresskit(),
+                getLinks().getRedditLaunch(),
+                getLinks().getRedditMedia()
+        );
     }
 
 }
