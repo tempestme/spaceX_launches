@@ -17,4 +17,7 @@ public interface SpaceXInterface {
 
     @GET("/v2/launches")
     Call<ArrayList<Launch>> getLatestLaunch(@Query("launch_year")String year);
+
+    @GET("/v2/launches/upcoming")
+    Call<ArrayList<Launch>> getUpcomingLaunch();
 }

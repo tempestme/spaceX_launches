@@ -71,7 +71,10 @@ public class Launch implements Serializable{
     }
 
     public String getLaunchDateUtc() {
-        return launchDateUtc;
+        String date = launchDateUtc.split("T")[0];
+        String normaldate = date.split("-")[2]+"."+date.split("-")[1]+"."+ date.split("-")[0];
+
+        return normaldate;
     }
 
     public void setLaunchDateUtc(String launchDateUtc) {

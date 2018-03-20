@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.pavel.loadmore.R;
@@ -74,16 +75,24 @@ public class LaunchAdapter extends RecyclerView.Adapter < RecyclerView.ViewHolde
 
     @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof UserViewHolder) {
-            //User user = mUsers.get(position);
-            //Launch launch = launches.get(position);
             UserViewHolder userViewHolder = (UserViewHolder) holder;
-//                userViewHolder.tvName.setText(user.getName());
-//                userViewHolder.tvEmailId.setText(user.getEmail());
+;
 
             userViewHolder.rocketName.setText(launches.get(position).getRocket().getRocketName());
-            userViewHolder.launchSite.setText(launches.get(position).getLaunchSite().getSiteNameLong());
+            userViewHolder.launchSite.setText(launches.get(position).getLaunchSite().getSiteName());
             userViewHolder.time.setText(launches.get(position).getLaunchDateUtc());
             userViewHolder.details.setText(launches.get(position).getDetails());
+
+            if(launches.get(position).getRocket().getRocketName().equals("Falcon 9")){
+                ((UserViewHolder) holder).backLayout.setBackgroundResource(R.drawable.rocket9);
+            }
+            if(launches.get(position).getRocket().getRocketName().equals("Falcon 1")){
+                ((UserViewHolder) holder).backLayout.setBackgroundResource(R.drawable.rocket1);
+            }
+            if(launches.get(position).getRocket().getRocketName().equals("Falcon Heavy")){
+                ((UserViewHolder) holder).backLayout.setBackgroundResource(R.drawable.imageheavy);
+            }
+
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -123,16 +132,11 @@ public class LaunchAdapter extends RecyclerView.Adapter < RecyclerView.ViewHolde
     }
 
     static class UserViewHolder extends RecyclerView.ViewHolder {
-//        public TextView tvName;
-//        public TextView tvEmailId;
-        @BindView(R.id.detailRocketName)
-        public TextView rocketName;
-        @BindView(R.id.detailLaunchSite)
-        public TextView launchSite;
-        @BindView(R.id.detailLaunchTime)
-        public TextView time;
-        @BindView(R.id.detailsTv)
-        public TextView details;
+        @BindView(R.id.detailRocketName) public TextView rocketName;
+        @BindView(R.id.detailLaunchSite) public TextView launchSite;
+        @BindView(R.id.detailLaunchTime) public TextView time;
+        @BindView(R.id.detailsTv) public TextView details;
+        @BindView(R.id.backGround) public RelativeLayout backLayout;
 
         public UserViewHolder(View itemView) {
             super(itemView);

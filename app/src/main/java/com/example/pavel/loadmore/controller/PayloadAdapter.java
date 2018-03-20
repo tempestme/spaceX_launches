@@ -62,12 +62,9 @@ public class PayloadAdapter extends RecyclerView.Adapter<PayloadAdapter.customVi
         return payloads.size();
     }
     public class customViewHolder extends RecyclerView.ViewHolder{
-        @BindView(R.id.payloadId)
-        TextView payloadId;
-        @BindView(R.id.payloadType)
-        TextView type;
-        @BindView(R.id.payloadOrbit)
-        TextView orbit;
+        @BindView(R.id.payloadId) TextView payloadId;
+        @BindView(R.id.payloadType) TextView type;
+        @BindView(R.id.payloadOrbit) TextView orbit;
 
         public customViewHolder(View itemView) {
             super(itemView);

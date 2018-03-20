@@ -28,14 +28,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
-    @BindView(R.id.recycleView)
-    RecyclerView mRecyclerView;
-    private LaunchAdapter mUserAdapter;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.recycleView) RecyclerView mRecyclerView;
+    private LaunchAdapter launchAdapter;
     private SpaceXInterface client;
     private ArrayList<Launch> launches;
-    private static Integer current_year = 2018;
+    private Integer current_year;
 
 
     @Override protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         //mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        current_year = 2018;
 
         mToolbar.setTitle(R.string.app_name);
         launches = new ArrayList<Launch>();
@@ -63,26 +62,24 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<Launch> turnedList = response.body();
                 Collections.reverse(turnedList);
                 launches.addAll(turnedList);
-                mUserAdapter.notifyDataSetChanged();
+                launchAdapter.notifyDataSetChanged();
                 current_year-=1;
             }
-
             @Override
             public void onFailure(Call<ArrayList<Launch>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),R.string.check_internet,Toast.LENGTH_LONG).show();
             }
         });
 
-
         //mRecyclerView = (RecyclerView) findViewById(R.id.recycleView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mUserAdapter = new LaunchAdapter(mRecyclerView,launches,getApplicationContext());
-        mRecyclerView.setAdapter(mUserAdapter);
-        mUserAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
+        launchAdapter = new LaunchAdapter(mRecyclerView,launches,getApplicationContext());
+        mRecyclerView.setAdapter(launchAdapter);
+        launchAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override public void onLoadMore() {
                 Log.e("haint", "Load More");
                 launches.add(null);
-                mUserAdapter.notifyItemInserted(launches.size() - 1);
+                launchAdapter.notifyItemInserted(launches.size() - 1);
                 //Load more data for reyclerview
                 new Handler().postDelayed(new Runnable() {
                     @Override public void run() {
@@ -91,9 +88,10 @@ public class MainActivity extends AppCompatActivity {
 
                         //Remove loading item
                         launches.remove(launches.size() - 1);
-                        mUserAdapter.notifyItemRemoved(launches.size());
+                        launchAdapter.notifyItemRemoved(launches.size());
 
                         Call<ArrayList<Launch>> call = client.getLatestLaunch(current_year.toString());
+
                         call.enqueue(new Callback<ArrayList<Launch>>() {
                             @Override
                             public void onResponse(Call<ArrayList<Launch>> call, Response<ArrayList<Launch>> response) {
@@ -101,9 +99,13 @@ public class MainActivity extends AppCompatActivity {
                                     ArrayList<Launch> turnedList = response.body();
                                     Collections.reverse(turnedList);
                                     launches.addAll(turnedList);
-                                    current_year-=1;
-                                    mUserAdapter.notifyDataSetChanged();
-                                    mUserAdapter.setLoaded();
+                                    if (current_year==2012){
+                                        current_year-=2;
+                                    }else {
+                                        current_year-=1;
+                                    }
+                                    launchAdapter.notifyDataSetChanged();
+                                    launchAdapter.setLoaded();
 
                                 }
                                 else{
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                     }
-                }, 5000);
+                }, 1000);
             }
         });
     }

@@ -21,31 +21,19 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DetailActivity extends AppCompatActivity {
-    @BindView(R.id.detailRocketName)
-    TextView name;
-    @BindView(R.id.detailLaunchSite)
-    TextView site;
-    @BindView(R.id.detailLaunchTime)
-    TextView time;
-    @BindView(R.id.detailDetails)
-    TextView details;
-    @BindView(R.id.detailCore)
-    TextView core;
-    @BindView(R.id.detailCore1)
-    TextView sidecore1;
-    @BindView(R.id.detailCore2)
-    TextView sidecore2;
-    @BindView(R.id.payloadsList)
-    RecyclerView payloadList;
+    @BindView(R.id.detailRocketName) TextView name;
+    @BindView(R.id.detailLaunchSite) TextView site;
+    @BindView(R.id.detailLaunchTime) TextView time;
+    @BindView(R.id.detailDetails) TextView details;
+    @BindView(R.id.detailCore) TextView core;
+    @BindView(R.id.detailCore1) TextView sidecore1;
+    @BindView(R.id.detailCore2) TextView sidecore2;
+    @BindView(R.id.payloadsList) RecyclerView payloadList;
 
-    @BindView(R.id.articleLink)
-    TextView articleLink;
-    @BindView(R.id.pressLink)
-    TextView pressKit;
-    @BindView(R.id.redditLink)
-    TextView reddit1;
-    @BindView(R.id.redditLink2)
-    TextView reddit2;
+    @BindView(R.id.articleLink) TextView articleLink;
+    @BindView(R.id.pressLink) TextView pressKit;
+    @BindView(R.id.redditLink) TextView reddit1;
+    @BindView(R.id.redditLink2) TextView reddit2;
 
     Intent i;
     RecyclerView.LayoutManager layoutManager;
