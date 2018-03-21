@@ -1,12 +1,14 @@
 package com.example.pavel.loadmore.view;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,13 +27,13 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.detailLaunchSite) TextView site;
     @BindView(R.id.detailLaunchTime) TextView time;
     @BindView(R.id.detailDetails) TextView details;
-    @BindView(R.id.detailCore) TextView core;
-    @BindView(R.id.detailCore1) TextView sidecore1;
-    @BindView(R.id.detailCore2) TextView sidecore2;
     @BindView(R.id.payloadsList) RecyclerView payloadList;
+    @BindView(R.id.coreReusable) CheckBox coreCheckbox;
+    @BindView(R.id.sidecore1Reusable) CheckBox sidecoreCheckbox1;
+    @BindView(R.id.sidecore2Reusable) CheckBox sidecoreCheckbox2;
 
     @BindView(R.id.articleLink) TextView articleLink;
-    @BindView(R.id.pressLink) TextView pressKit;
+    @BindView(R.id.presskit) TextView pressKit;
     @BindView(R.id.redditLink) TextView reddit1;
     @BindView(R.id.redditLink2) TextView reddit2;
 
@@ -44,6 +46,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         i = getIntent();
         detailInfo  = i.getParcelableExtra("details");
@@ -67,30 +71,11 @@ public class DetailActivity extends AppCompatActivity {
         if(detailInfo.getDetails()!=null){
             details.setText(detailInfo.getDetails());
         }
-        if(detailInfo.isCore()==true){
-            core.setText(R.string.reusable);
-            core.setBackgroundResource(R.color.succeeded);
-        }
-        else{
-            core.setText(R.string.not_reusable);
-            core.setBackgroundResource(R.color.failed);
-        }
-        if(detailInfo.isSidecore1()==true){
-            sidecore1.setText(R.string.reusable);
-            sidecore1.setBackgroundResource(R.color.succeeded);
-        }
-        else{
-            sidecore1.setText(R.string.not_reusable);
-            sidecore1.setBackgroundResource(R.color.failed);
-        }
-        if(detailInfo.isSidecore2()==true){
-            sidecore2.setText(R.string.reusable);
-            sidecore2.setBackgroundResource(R.color.succeeded);
-        }
-        else{
-            sidecore2.setText(R.string.not_reusable);
-            sidecore2.setBackgroundResource(R.color.failed);
-        }
+
+        coreCheckbox.setChecked(detailInfo.isCore());
+        sidecoreCheckbox1.setChecked(detailInfo.isSidecore1());
+        sidecoreCheckbox2.setChecked(detailInfo.isSidecore2());
+
         if (detailInfo.getArticleLink()!=null){
             articleLink.setOnClickListener(new View.OnClickListener() {
                 @Override

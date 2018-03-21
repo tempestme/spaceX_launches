@@ -18,6 +18,10 @@
 
         android:id="@+id/backGround"
         >
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/backgroudImage" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -26,9 +30,9 @@
             android:id="@+id/relativeLayout">
 
             <TextView
+                style="@style/Base.TextAppearance.AppCompat.Large"
                 android:fontFamily="sans-serif-black"
                 android:id="@+id/detailRocketName"
-                style="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -37,7 +41,8 @@
                 android:shadowDy="0"
                 android:shadowRadius="5"
                 android:layout_alignStart="@+id/detailLaunchSite"
-                tools:text="Falcon Heavy" />
+                tools:text="Falcon Heavy"
+                />
 
             <TextView
                 android:textStyle="bold"
@@ -55,7 +60,8 @@
                 android:shadowDy="0"
                 android:shadowRadius="5"
                 android:textColor="@color/textOnSecondary"
-                tools:text="Launch site: CCAFS SLC 40" />
+                tools:text="Launch site: CCAFS SLC 40"
+                />
 
             <TextView
                 android:textStyle="bold"
@@ -74,7 +80,8 @@
                 android:shadowDx="0"
                 android:shadowDy="0"
                 android:shadowRadius="5"
-                tools:text="06.02.2018" />
+                tools:text="06.02.2018"
+                />
         </RelativeLayout>
 
         <TextView

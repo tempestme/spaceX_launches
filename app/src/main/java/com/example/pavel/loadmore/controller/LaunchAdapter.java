@@ -7,13 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.pavel.loadmore.R;
 import com.example.pavel.loadmore.model.Launch;
 import com.example.pavel.loadmore.view.DetailActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -73,9 +74,10 @@ public class LaunchAdapter extends RecyclerView.Adapter < RecyclerView.ViewHolde
         return null;
     }
 
-    @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    @Override public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof UserViewHolder) {
             UserViewHolder userViewHolder = (UserViewHolder) holder;
+
 ;
 
             userViewHolder.rocketName.setText(launches.get(position).getRocket().getRocketName());
@@ -84,14 +86,21 @@ public class LaunchAdapter extends RecyclerView.Adapter < RecyclerView.ViewHolde
             userViewHolder.details.setText(launches.get(position).getDetails());
 
             if(launches.get(position).getRocket().getRocketName().equals("Falcon 9")){
-                ((UserViewHolder) holder).backLayout.setBackgroundResource(R.drawable.rocket9);
+                Picasso.with(context)
+                        .load(R.drawable.rocket9_min)
+                        .fit()
+                        .into(((UserViewHolder) holder).background);
             }
             if(launches.get(position).getRocket().getRocketName().equals("Falcon 1")){
-                ((UserViewHolder) holder).backLayout.setBackgroundResource(R.drawable.rocket1);
-            }
+                Picasso.with(context)
+                        .load(R.drawable.rocket1_min)
+                        .fit()
+                        .into(((UserViewHolder) holder).background);     }
             if(launches.get(position).getRocket().getRocketName().equals("Falcon Heavy")){
-                ((UserViewHolder) holder).backLayout.setBackgroundResource(R.drawable.imageheavy);
-            }
+                Picasso.with(context)
+                        .load(R.drawable.imageheavy_min)
+                        .fit()
+                        .into(((UserViewHolder) holder).background);        }
 
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -136,8 +145,7 @@ public class LaunchAdapter extends RecyclerView.Adapter < RecyclerView.ViewHolde
         @BindView(R.id.detailLaunchSite) public TextView launchSite;
         @BindView(R.id.detailLaunchTime) public TextView time;
         @BindView(R.id.detailsTv) public TextView details;
-        @BindView(R.id.backGround) public RelativeLayout backLayout;
-
+        @BindView(R.id.backgroudImage) public ImageView background;
         public UserViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

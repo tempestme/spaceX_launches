@@ -11,161 +11,129 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mainCard">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:fontFamily="sans-serif-black"
+                android:id="@+id/detailRocketName"
+                style="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#b2ffb2">
+                android:layout_alignParentTop="true"
+                android:shadowColor="@color/textOnPrimary"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:layout_alignStart="@+id/detailLaunchSite"
+                tools:text="Falcon Heavy"
+                />
+            <TextView
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-thin"
+                android:id="@+id/detailLaunchSite"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/detailRocketName"
+                android:gravity="left"
+                android:layout_marginLeft="8dp"
+                android:shadowColor="@color/textOnPrimary"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:textColor="@color/textOnSecondary"
+                tools:text="Launch site: CCAFS SLC 40"
+                />
 
-                <TextView
-                    android:id="@+id/detailRocketName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    tools:text="Falcon Heavy"
-                    style="@style/Base.TextAppearance.AppCompat.Large"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    tools:text="Kennedy Space Historic launch complex 39 A"
-                    android:layout_below="@id/detailRocketName"
-                    android:id="@+id/detailLaunchSite"
-                    android:gravity="center"
-                    style="@style/TextAppearance.AppCompat.Medium"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/detailLaunchTime"
-                    android:layout_below="@id/detailLaunchSite"
-                    tools:text="06:02:2018"
-                    style="@style/Base.TextAppearance.AppCompat.Medium"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
+            <TextView
+                android:fontFamily="sans-serif-thin"
+                android:id="@+id/detailLaunchTime"
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_alignBottom="@+id/detailRocketName"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/textOnSecondary"
+                android:shadowColor="@color/textOnPrimary"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                tools:text="06.02.2018"
+                />
+        </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/mainCard"
             android:id="@+id/detailDetails"
-            android:layout_margin="5dp"
-            tools:text="description of the launch, from which site it was launched, what rocket type it was, and other details, that can't be described in other fields"/>
+            android:layout_margin="8dp"
+            tools:text="description of the launch, from which site
+            it was launched, what rocket type it was, and other details,
+            that can't be described in other fields"
+            android:ellipsize="end"
+            android:maxLines="10"
+            android:shadowColor="@color/textOnPrimary"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="10"
+            android:textColor="@color/textOnSecondary"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-thin"
+            />
 
-        <RelativeLayout
-            android:padding="1dp"
+        <CheckBox
+            android:id="@+id/coreReusable"
             android:layout_width="match_parent"
-            android:id="@+id/sidecore1Layout"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/detailDetails"
-            android:background="@color/black">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="left"
-                android:gravity="center"
-                android:text="side core 1"
-                style="medi"
-                android:textColor="@color/lightGrey"/>
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="center"
-                android:gravity="center"
-                tools:text="landed"
-                android:background="@color/succeeded"
-                android:id="@+id/detailCore1"
-                android:textColor="@color/black"/>
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:padding="1dp"
-            android:id="@+id/sidecore2Layout"
+            android:layout_marginLeft="8dp"
+            android:text="core"
+            android:clickable="false"/>
+        <CheckBox
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:layout_below="@id/sidecore1Layout"
-            android:background="@color/black">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="left"
-                android:gravity="center"
-                android:text="side core 2"
-                android:textColor="@color/lightGrey"/>
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="center"
-                android:gravity="center"
-                tools:text="landed"
-                android:background="@color/succeeded"
-                android:id="@+id/detailCore2"
-                android:textColor="@color/black"/>
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:padding="1dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/coreReusable"
+            android:id="@+id/sidecore1Reusable"
+            android:text="side core 1"
+            android:layout_marginLeft="8dp"
+            android:clickable="false"/>
+        <CheckBox
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:id="@+id/coreLayout"
-            android:layout_below="@id/sidecore2Layout"
-            android:background="@color/black">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sidecore1Reusable"
+            android:id="@+id/sidecore2Reusable"
+            android:text="side core 2"
+            android:layout_marginLeft="8dp"
+            android:clickable="false"/>
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="left"
-                android:gravity="center"
-                android:text="core"
-                android:textColor="@color/lightGrey"/>
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="center"
-                android:gravity="center"
-                tools:text="landed"
-                android:background="@color/succeeded"
-                android:id="@+id/detailCore"
-                android:textColor="@color/black"/>
-
-        </RelativeLayout>
 
         <TextView
-            android:id="@+id/payloadsTv"
             style="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/coreLayout"
-            android:layout_centerHorizontal="true"
+            android:layout_alignStart="@+id/sidecore2Reusable"
+            android:layout_below="@+id/sidecore2Reusable"
+            android:text="payloads"
+            android:fontFamily="sans-serif-black"
+            android:id="@+id/payloadsTv"
             android:gravity="center"
-            android:text="payloads" />
+            android:shadowColor="@color/textOnPrimary"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            />
         <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:id="@+id/payloadsList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -173,35 +141,58 @@
         </android.support.v7.widget.RecyclerView>
 
         <TextView
+            android:id="@+id/linksTv"
             style="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/payloadsTv"
             android:layout_below="@+id/payloadsList"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
             android:text="links"
-            android:id="@+id/linksTv"/>
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:shadowColor="@color/textOnPrimary"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:weightSum="4"
             android:orientation="horizontal"
             android:layout_below="@id/linksTv"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             >
-            <TextView
+            <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:id="@+id/articleLink"
-                android:text="articleLink"/>
-            <TextView
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:id="@+id/articleLink"
+                    android:text="article link"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:id="@+id/pressLink"
-                android:text="presskit"/>
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:id="@+id/presskit"
+                    android:text="press kit"/>
+
+            </android.support.v7.widget.CardView>
+
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
