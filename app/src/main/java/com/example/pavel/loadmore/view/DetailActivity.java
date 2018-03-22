@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -32,10 +33,10 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.sidecore1Reusable) CheckBox sidecoreCheckbox1;
     @BindView(R.id.sidecore2Reusable) CheckBox sidecoreCheckbox2;
 
-    @BindView(R.id.articleLink) TextView articleLink;
-    @BindView(R.id.presskit) TextView pressKit;
-    @BindView(R.id.redditLink) TextView reddit1;
-    @BindView(R.id.redditLink2) TextView reddit2;
+    @BindView(R.id.articleLink) CardView articleLink;
+    @BindView(R.id.presskit) CardView pressKit;
+    @BindView(R.id.redditLink) CardView reddit1;
+    @BindView(R.id.redditLink2) CardView reddit2;
 
     Intent i;
     RecyclerView.LayoutManager layoutManager;
