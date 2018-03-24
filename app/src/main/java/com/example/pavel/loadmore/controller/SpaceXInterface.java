@@ -1,6 +1,6 @@
 package com.example.pavel.loadmore.controller;
 
-import com.example.pavel.loadmore.model.Launch;
+import com.example.pavel.loadmore.model.LaunchModel.Launch;
 
 import java.util.ArrayList;
 

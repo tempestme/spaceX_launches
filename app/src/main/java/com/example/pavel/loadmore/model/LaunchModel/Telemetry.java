@@ -1,5 +1,5 @@
 
-package com.example.pavel.loadmore.model;
+package com.example.pavel.loadmore.model.LaunchModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

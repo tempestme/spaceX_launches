@@ -1,4 +1,4 @@
-package com.example.pavel.loadmore.model;
+package com.example.pavel.loadmore.model.LaunchModel;
 
 import android.os.Parcel;
 import android.os.Parcelable;

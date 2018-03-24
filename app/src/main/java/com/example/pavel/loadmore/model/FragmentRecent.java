@@ -1,20 +1,21 @@
-package com.example.pavel.loadmore.view;
+package com.example.pavel.loadmore.model;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.pavel.loadmore.R;
 import com.example.pavel.loadmore.controller.LaunchAdapter;
 import com.example.pavel.loadmore.controller.OnLoadMoreListener;
 import com.example.pavel.loadmore.controller.SpaceXInterface;
-import com.example.pavel.loadmore.model.Launch;
+import com.example.pavel.loadmore.model.LaunchModel.Launch;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,27 +28,39 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Created by pavel on 24.03.18.
+ */
 
-public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar) Toolbar mToolbar;
-    @BindView(R.id.recycleView) RecyclerView mRecyclerView;
+public class FragmentRecent extends Fragment {
+
+    @BindView(R.id.recycleView)
+    RecyclerView mRecyclerView;
     private LaunchAdapter launchAdapter;
     private SpaceXInterface client;
     private ArrayList<Launch> launches;
     private Integer current_year;
-
-
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_recent,container,false);
+        ButterKnife.bind(getActivity());
+
+
         current_year = 2018;
 
-        mToolbar.setTitle(R.string.app_name);
         launches = new ArrayList<Launch>();
+        mRecyclerView = (RecyclerView)view.findViewById(R.id.recycleView);
         /**
          * loading first data
          */
@@ -70,13 +83,13 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<ArrayList<Launch>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),R.string.check_internet,Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),R.string.check_internet,Toast.LENGTH_LONG).show();
             }
         });
 
         //mRecyclerView = (RecyclerView) findViewById(R.id.recycleView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        launchAdapter = new LaunchAdapter(mRecyclerView,launches,getApplicationContext());
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        launchAdapter = new LaunchAdapter(mRecyclerView,launches,getActivity());
         mRecyclerView.setAdapter(launchAdapter);
         launchAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override public void onLoadMore() {
@@ -84,9 +97,8 @@ public class MainActivity extends AppCompatActivity {
                 launches.add(null);
                 launchAdapter.notifyItemInserted(launches.size() - 1);
                 //Load more data for reyclerview
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
-                        Log.e("haint", "Load More 2");
+
+
 
 
                         //Remove loading item
@@ -112,19 +124,20 @@ public class MainActivity extends AppCompatActivity {
 
                                 }
                                 else{
-                                    Toast.makeText(getApplicationContext(),R.string.nothing_to_load, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(),R.string.nothing_to_load, Toast.LENGTH_SHORT).show();
                                 }
 
                             }
 
                             @Override
                             public void onFailure(Call<ArrayList<Launch>> call, Throwable t) {
-                                Toast.makeText(getApplicationContext(),R.string.check_internet,Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(),R.string.check_internet,Toast.LENGTH_LONG).show();
                             }
                         });
-                    }
-                }, 1000);
+
             }
         });
+
+        return view;
     }
 }

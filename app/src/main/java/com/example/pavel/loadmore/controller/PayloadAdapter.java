@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.pavel.loadmore.R;
-import com.example.pavel.loadmore.model.Payload;
+import com.example.pavel.loadmore.model.LaunchModel.Payload;
 
 import java.util.ArrayList;
 

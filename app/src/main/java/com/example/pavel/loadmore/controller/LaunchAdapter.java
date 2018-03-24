@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.pavel.loadmore.R;
-import com.example.pavel.loadmore.model.Launch;
+import com.example.pavel.loadmore.model.LaunchModel.Launch;
 import com.example.pavel.loadmore.view.DetailActivity;
 import com.squareup.picasso.Picasso;
 

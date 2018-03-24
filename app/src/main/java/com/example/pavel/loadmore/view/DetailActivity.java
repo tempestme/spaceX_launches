@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 import com.example.pavel.loadmore.R;
 import com.example.pavel.loadmore.controller.PayloadAdapter;
-import com.example.pavel.loadmore.model.DetailInfo;
-import com.example.pavel.loadmore.model.Payload;
+import com.example.pavel.loadmore.model.LaunchModel.DetailInfo;
+import com.example.pavel.loadmore.model.LaunchModel.Payload;
 
 import java.util.ArrayList;
 
